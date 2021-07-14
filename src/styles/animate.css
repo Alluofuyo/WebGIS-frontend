@@ -1,0 +1,9 @@
+@import "animate.css/animate.css";
+
+.slide-enter-active, .slide-enter-from {
+    animation: 1s fadeInLeft;
+}
+
+.slide-leave-active, .slide-leave-from {
+    animation: 1s fadeOutLeft;
+}
