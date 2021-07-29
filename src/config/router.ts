@@ -56,7 +56,7 @@ const routes = [
             },
             {
                 path: "about",
-                component: () => import("@/views/nav/Map.vue"),
+                component: () => import("@/views/nav/About.vue"),
                 meta: {
                     transition: "fade"
                 }

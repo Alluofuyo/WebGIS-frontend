@@ -1,6 +1,10 @@
 import {ComponentCustomProperties} from "vue";
 import {Store} from "vuex";
 
+
+
+
+
 declare module '@vue/runtime-core' {
     interface State {
         userInfo: {
@@ -9,7 +13,8 @@ declare module '@vue/runtime-core' {
             birthday: string,
             email: string,
             id: number,
-            gender: number
+            gender: number,
+            avatar:string
         },
         token: string
     }

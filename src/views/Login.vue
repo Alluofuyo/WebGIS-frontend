@@ -65,6 +65,7 @@ export default {
               duration: 1000
             })
           } else {
+            window.localStorage.setItem("token", res.data.data.token)
             this.setLogin(res.data.data)
             console.log(this.$store)
             console.log(this.$router)
@@ -103,6 +104,7 @@ export default {
 
 .box-card {
   margin-top: 25vh;
+
 }
 
 

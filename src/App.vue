@@ -12,9 +12,20 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
+import {store} from "./config/store";
 
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+  created() {
+    let token = window.localStorage.getItem("token")
+    if (token) {
+      store.commit("setToken", token)
+      this.axios.get("/user/getUserInfo").then(res=>{
+        store.commit("updateUser",res.data.data.user)
+        this.$router.replace("/index")
+      })
+    }
+  }
 })
 </script>
 
@@ -23,6 +34,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;

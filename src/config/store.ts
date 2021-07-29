@@ -1,7 +1,21 @@
 import {createStore} from "vuex";
 
+
+interface State{
+    userInfo: {
+        username: "",
+        nickname: "",
+        birthday: "",
+        email: "",
+        id: "",
+        gender: "",
+        avatar: ""
+    },
+    token: ""
+}
+
 const store = createStore({
-    state() {
+    state():State {
         return {
             userInfo: {
                 username: "",
@@ -9,19 +23,21 @@ const store = createStore({
                 birthday: "",
                 email: "",
                 id: "",
-                gender: ""
+                gender: "",
+                avatar: ""
             },
             token: ""
         }
     },
     mutations: {
-        login(state: { userInfo: Object, token: string }, data) {
+        login(state:State, data) {
             console.log(state)
             state.userInfo = data.user
             state.token = data.token
         },
-        logout(state: { userInfo: Object, token: string }) {
+        logout(state:State) {
             state.userInfo = {
+                avatar: "",
                 username: "",
                 nickname: "",
                 birthday: "",
@@ -33,6 +49,12 @@ const store = createStore({
         },
         updateUser(state, user) {
             Object.assign(state.userInfo, user)
+        },
+        setToken(state, data) {
+            state.token = data
+        },
+        setAvatar(state, a) {
+            state.userInfo.avatar = a
         }
     }
 })

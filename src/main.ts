@@ -27,9 +27,23 @@ import {
     ElForm,
     ElDivider,
     ElSpace,
-    ElCollapseTransition, ElContainer, ElHeader, ElMain, ElFooter,
+    ElCollapseTransition,
+    ElContainer,
+    ElHeader,
+    ElMain,
+    ElFooter,
     ElMenu,
-    ElMenuItem, ElImage, ElLink, ElDrawer, ElMessage, ElDescriptions, ElDescriptionsItem, ElDialog, ElRadio, ElTag
+    ElMenuItem,
+    ElImage,
+    ElLink,
+    ElDrawer,
+    ElMessage,
+    ElDescriptions,
+    ElDescriptionsItem,
+    ElDialog,
+    ElRadio,
+    ElTag,
+    ElAvatar, ElDropdown, ElDropdownItem, ElDropdownMenu, ElUpload
 } from 'element-plus'
 
 const ElComponent = [
@@ -60,7 +74,12 @@ const ElComponent = [
     ElDescriptionsItem,
     ElDialog,
     ElRadio,
-    ElTag
+    ElTag,
+    ElAvatar,
+    ElDropdown,
+    ElDropdownItem,
+    ElDropdownMenu,
+    ElUpload
 ]
 const app = createApp(App)
 
@@ -70,7 +89,6 @@ app.component("font-awesome-icon", FontAwesomeIcon)
 ElComponent.forEach((e) => {
     app.use(e)
 })
-
 
 
 app.use(router)

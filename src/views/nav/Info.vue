@@ -5,6 +5,10 @@
         <template #extra>
           <el-link @click.prevent="showUpdateDialog" type="primary">修改信息</el-link>
         </template>
+        <el-descriptions-item label-align="right" label="头像:">
+          <el-avatar :src="userInfo.avatar">
+          </el-avatar>
+        </el-descriptions-item>
         <el-descriptions-item label-align="right" class-name="list-content" label-class-name="list-label" label="用户名:">
           {{ userInfo.username }}
         </el-descriptions-item>
@@ -32,6 +36,11 @@
         label-width="100px"
         @keypress.enter="updateInfo"
     >
+      <el-form-item label="头像:">
+        <el-upload ref="upload" list-type="text" :show-file-list="true" :headers="{'satoken':$store.state.token}" action="http://localhost:8080/user/uploadAvatar" :multiple="false" :name="info.username" :auto-upload="false">
+          <el-avatar></el-avatar>
+        </el-upload>
+      </el-form-item>
       <el-form-item label="用户名:">
         <el-input :model-value="info.username" disabled></el-input>
       </el-form-item>
@@ -69,6 +78,7 @@
 import {mapState, mapMutations} from 'vuex'
 
 export default {
+  name:"Info",
   data() {
     return {
       isUpdate: false,
@@ -84,11 +94,15 @@ export default {
   },
   computed: mapState(["userInfo"]),
   methods: {
+    uploadAvatar(){
+
+    },
     showUpdateDialog() {
       this.isUpdate = true;
       Object.assign(this.info, this.userInfo)
     },
     updateInfo() {
+      this.$refs.upload.submit()
       this.axios.post("/user/updateUserInfo", this.info).then(res => {
         console.log(res)
         if (res.data.status === 0) {
